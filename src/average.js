@@ -12,21 +12,21 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 const average = (array) => {
   let sum = 0;
-  for (let index = 0; index < array.length; index += 1) {
-    if (typeof (array[index]) !== 'number' || array.length === 0) {
-      sum = undefined;
+  let result;
+  for (let number in array) {
+    if (typeof (array[number]) !== 'number' || array.length === 0) {
+      result = undefined;
       break;
     } else {
-      sum += array[index];
+      sum += array[number];
+      result = Math.round(sum / array.length);
     }
   }
-  const result = (sum === undefined) ? undefined : Math.round(sum / array.length);
   return result;
 };
-console.log(average([3, '4', 5]));
+console.log(average([3, 4, 5]));
 console.log(average([1, 1]));
 console.log(average([1, '2']));
 
