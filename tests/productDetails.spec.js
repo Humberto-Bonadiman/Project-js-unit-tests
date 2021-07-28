@@ -30,12 +30,15 @@ const productDetails = require('../src/productDetails');
 
 describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
   it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    assert.fail();
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste que o retorno da função é um array.
-    // Teste que o array retornado pela função contém dois itens dentro.
-    // Teste que os dois itens dentro do array retornado pela função são objetos.
-    // Teste que os dois objetos são diferentes entre si.
-    // Teste que os dois productIds terminam com 123.
+    /* Consultei o repositório do Vitor Oliveira Silva para resolver essa parte
+    link: https://github.com/tryber/sd-014-b-project-js-unit-tests/pull/68/commits/790fc3e05008978c1377da2db0f0722153e353cc */
+    const products = productDetails('Alcool gel', 'Máscara');
+    assert.strictEqual(Array.isArray(products), true);
+    assert.strictEqual(products.length, 2);
+    assert.strictEqual(typeof products[0], 'object');
+    assert.strictEqual(typeof products[1], 'object');
+    assert.notDeepStrictEqual(products[0], products[1]);
+    assert.strictEqual(products[0].details.productId.endsWith('123'), true);
+    assert.strictEqual(products[1].details.productId.endsWith('123'), true);
   });
 });
